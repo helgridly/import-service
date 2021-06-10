@@ -1,9 +1,10 @@
-FROM python:3.9.1 AS build
+FROM python:3.9.5 AS build
 
 RUN python3 -m venv /venv
 
 # Install Python dependencies into the virtualenv
 COPY requirements.txt /
+RUN /venv/bin/python3 -m pip install --upgrade pip
 RUN /venv/bin/pip install -r /requirements.txt
 RUN /venv/bin/pip install gunicorn
 
